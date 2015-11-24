@@ -8,7 +8,18 @@ shinyUI(bootstrapPage(
     sidebarPanel(navbarPage(
       "App Title",
       tabPanel("T-test"),
-      tabPanel("F-test")
+      tabPanel("F-test"),
+      fileInput('file1', 'Choose file to upload',
+                accept = c(
+                  'text/csv',
+                  'text/comma-separated-values',
+                  'text/tab-separated-values',
+                  'text/plain',
+                  '.csv',
+                  '.tsv')
+                ),
+      actionButton(inputId = "readFile", "Read File"),
+      numericInput(inputId = "numberOfData", label= "Data count", 10, min = 2, max = 1000, step = 1)
     )),
     mainPanel(
       navbarPage(
@@ -16,20 +27,20 @@ shinyUI(bootstrapPage(
         tabPanel("Data",
                  mainPanel(
           h2("dz from t for correlated samples"),
-          
+          shinyalert("shinyalert1", FALSE,auto.close.after = 5),
           flowLayout(
             
             #fluidRow(
-              style='width: 1000px;',
+              #style='width: 1000px;',
              # column(6,
                      div(class = "well container-fluid",
-                         style = "overflow-y:scroll; max-height: 300px; width: 250px;"
+                         style = "overflow-y:scroll; min-height:300px; width: 250px"
                          ,hotable("hotable1"))  ,    
              # ),
               
              # column(6,
                      div(class = "well container-fluid",
-                         style = "overflow-y:scroll; margin-left: 35px; max-height: 300px; width:400px"
+                         style = "overflow-y:scroll; margin-left: 35px; min-height: 300px; width: 500px"
                          ,hotable("hotable2")) 
              # )
             #)
@@ -38,7 +49,10 @@ shinyUI(bootstrapPage(
           
           
         )),
-        tabPanel("Plots"),
+        tabPanel("Plots",
+                 plotOutput(outputId = "main_plot", height = "300px"),
+                 plotOutput(outputId = "main_plot2", height = "300px")
+                 ),
         tabPanel("Descriptive statistics")
         
       )
@@ -46,28 +60,15 @@ shinyUI(bootstrapPage(
       
       
     )
-  )
+  ),
   
-  
-  #   selectInput(inputId = "n_breaks",
-  #               label = "Number of bins in histogram (approximate):",
-  #               choices = c(10, 20, 35, 50),
-  #               selected = 20),
-  #
-  #   checkboxInput(inputId = "individual_obs",
-  #                 label = strong("Show individual observations"),
-  #                 value = FALSE),
-  #
-  #   checkboxInput(inputId = "density",
-  #                 label = strong("Show density estimate"),
-  #                 value = FALSE),
-  #
-  #   plotOutput(outputId = "main_plot", height = "300px"),
-  #
-  #   # Display this only if the density is shown
-  #   conditionalPanel(condition = "input.density == true",
-  #                    sliderInput(inputId = "bw_adjust",
-  #                                label = "Bandwidth adjustment:",
-  #                                min = 0.2, max = 2, value = 1, step = 0.2)
+  tags$script('
+    Shiny.addCustomMessageHandler("resetFileInputHandler", function(x) {      
+              var id = "#" + x + "_progress";
+              var idBar = id + " .bar";
+              $(id).css("visibility", "hidden");
+              $(idBar).css("width", "0%");
+              });
+              ')
   
 ))
