@@ -1,0 +1,6 @@
+language: r
+sudo: required
+script: ./upload.R
+env:
+  global:
+    secure: se9MhsWZ8xZ3ukpCnxsU
