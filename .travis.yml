@@ -1,6 +1,10 @@
 language: r
 sudo: required
 script: ./upload.R
+before_install:
+- echo "options(repos = c(CRAN='https://cran.rstudio.com/'))" > ~/.Rprofile
+r_github_packages:
+- hadley/devtools#936
 env:
   global:
     secure: se9MhsWZ8xZ3ukpCnxsU
