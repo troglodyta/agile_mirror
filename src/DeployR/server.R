@@ -27,7 +27,7 @@ shinyServer(function(input, output, session) {
       data = filedata()
       if (!is.null(data)) {
         Data1 <- data[,1]
-        Data2 <- data[,2]
+        Data2 <- data[,2] 
         print(Data1)
         print(Data2)
         df <- data.frame(np = seq(1, length(Data1), 1),
