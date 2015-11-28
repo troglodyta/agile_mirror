@@ -1,18 +1,9 @@
 language: r
 sudo: required
+script: ./upload.R
 
-before_install:
-- echo "options(repos = c(CRAN='https://cran.rstudio.com/'))" > ~/.Rprofile
 r_github_packages:
-  - rstudio/rmarkdown
-  - hadley/testthat
-  - jimhester/covr
-  - jimhester/lintr
-
-after_success:
-  script: ./upload.R
-
-
+ - hadley/httr
 
 env:
   global:
