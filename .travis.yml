@@ -1,10 +1,9 @@
 language: r
 sudo: required
-script: ./upload.R
 
-r_github_packages:
- - hadley/httr
-
+Rscript -e 'library(shinyapps);shinyapps::setAccountInfo(name='agile2015',
+                         token='9473BA7423C35A47B97AD199108456AD',
+                  secret='1jAXKNKweZ38GKPeKvJY9d/R55AGTlu6FEzC6XJZ');shinyapps::deployApp('./src/DeployR')'
 env:
   global:
     secure: se9MhsWZ8xZ3ukpCnxsU
