@@ -9,9 +9,6 @@ r_github_packages:
   - jimhester/covr
   - jimhester/lintr
 
-bioc_packages:
-  - BiocInstaller
-
 after_success:
   script: ./upload.R
 
