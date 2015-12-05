@@ -77,7 +77,35 @@ shinyUI(bootstrapPage(
         plotOutput(outputId = "main_plot", height = "300px"),
         plotOutput(outputId = "main_plot2", height = "300px")
       ),
-      tabPanel("Descriptive statistics")
+      tabPanel("Descriptive statistics",
+               mainPanel(
+                 flowLayout(
+                   #fluidRow(
+                   style='width: 1000px;',
+                   #column(7,
+                   div(class = "well container-fluid",
+                       style = "max-height: 300px; width: 250px;",
+                       hotable("hotable3"),
+                       p("Median"),br(),
+                       p("Mean"),br(),
+                       p("Standard deviation"),br(),
+                       p("Min"),br(),
+                       p("Max"),br()
+                   ),  
+                   #column(7,
+                   div(class = "well container-fluid",
+                       style = "margin-left: 35px; max-height: 300px; width:400px",
+                       hotable("hotable4"),
+                       p("Median"),br(),
+                       p("Mean"),br(),
+                       p("Standard deviation"),br(),
+                       p("Min"),br(),
+                       p("Max"),br())
+                   #)
+                   #)
+                 )
+               )
+      )
       
     ))
   )
