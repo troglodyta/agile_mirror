@@ -16,6 +16,10 @@ test.clEffectSize <- function() {
   checkEquals(clEffectSize(1.5), 0.933192799)
 }
 
+test.computeR <- function() {
+  checkEquals(computeR(c(1,2,3), c(4,5,6)), 0.72554232)
+}
+
 
 
 

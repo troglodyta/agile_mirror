@@ -5,7 +5,7 @@ shinyapps::setAccountInfo(name='agile2015',
                           secret='1jAXKNKweZ38GKPeKvJY9d/R55AGTlu6FEzC6XJZ')
 library(shinyapps)
 #zmien path na swoj
-shinyapps::deployApp('./src/DeployR')
+shinyapps::deployApp('C:/Users/Daniel/Desktop/Programy/agile/src/DeployR')
 
 
 

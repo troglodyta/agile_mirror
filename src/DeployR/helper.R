@@ -15,6 +15,7 @@ T_test_Yes_Yes_No_compute <- function(data1,data2) {
   tval <- tTest$statistic
   np <- length(data1)
   cohensDzVal = cohensDz(np,tval)
+  
   datas <- data.frame( 
     npairs =  np,
     tValue = tval,
@@ -37,6 +38,20 @@ T_test_Yes_Yes_No_compute <- function(data1,data2) {
   return(datas)  
  
   
+}
+
+# widok 2
+# TODO How its compute
+computeR <-function(data1,data2) {
+  return(0.72554232)
+}
+
+mDiff <- function(mean1, mean2) {
+  return(0)
+}
+
+sDiff <- function(sd1, sd2) {
+  return(0)
 }
 
 
