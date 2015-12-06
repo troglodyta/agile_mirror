@@ -92,8 +92,8 @@ shinyServer(function(input, output, session) {
       else if (computeMode == "2") {
         output$text1 <- renderText({
           "Correlated (or Dependent) Samples"
-          x <- T_testYes_Yes_Yes_compute(data1List,data2List)
         })
+        x <- T_test_Yes_Yes_Yes_compute(data1List,data2List)
       }
       else if (computeMode == "3") {
         output$text1 <- renderText({
@@ -120,9 +120,11 @@ shinyServer(function(input, output, session) {
       
       # Tutaj w zaleznosci od wybranych checkboxow powinny
       # Się zmieniac wyliczane wartosci
-      output$summary <- renderPrint({
-          x
-      })
+      
+      output$outputData <- renderHotable({
+                df2 <- x
+                return(df2)
+              }, readOnly = FALSE)
   
     }
     else {

@@ -54,7 +54,7 @@ shinyUI(bootstrapPage(
                  h2(textOutput("text1")),
                  shinyalert("shinyalert1", FALSE,auto.close.after = 5),
                 
-                  div( style = "width: 2000px;",
+                  div( style = "width: 200%;",
                    div(
                      class = "well container-fluid",
                      style = "overflow-y:scroll; min-height:300px;max-height:300px;width: 260px; display: inline-block;",
@@ -69,9 +69,9 @@ shinyUI(bootstrapPage(
                    
                    
                    div(class = "well container-fluid",
-                       style = "overflow-y:scroll; min-height: 300px; width: 500px;display: inline-block;"
+                       style = "overflow:scroll; min-height: 300px; width: 54%;display: inline-block;"
                        ,
-                       verbatimTextOutput("summary")
+                       hotable("outputData")
                      )
                  )
                )),
