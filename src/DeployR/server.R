@@ -105,6 +105,8 @@ shinyServer(function(input, output, session) {
         output$text1 <- renderText({
           "ds from t for independent samples "
         })
+        
+        x <- T_test_Yes_No_No_Yes_compute(data1List,data2List)
       }
       else if (computeMode == "5") {
         output$text1 <- renderText({

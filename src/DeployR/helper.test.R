@@ -261,3 +261,34 @@ test.clEffectSize3 <- function() {
               0.787018081
               )
 }
+
+
+# widok 4
+test.cohensDs4 <- function() {
+  checkEquals(cohensDs4(10,10,2.517544075),
+         1.125879938
+         )
+}
+
+test.pval4 <- function() {
+  checkEquals(pval4(10,10,2.517544075),
+              0.021508334,
+              tolerance = 0.0001
+              )
+} 
+
+test.hedgesGs4 <- function() {
+  checkEquals(hedgesGs4(n1 = 10,
+                        n2 = 10,
+                        cohensDs4 = 1.125879938),
+              1.078307546
+              )
+}
+
+test.clEffectSize4 <- function() {
+  checkEquals(clEffectSize4(
+    cohensDs4 = 1.125879938
+  ),
+  0.787018081
+  )
+} 

@@ -371,3 +371,65 @@ T_test_Yes_No_Yes_compute <- function(data1,data2) {
   return(datas)
   
 }
+
+# widok 4
+cohensDs4 <- function(n1,n2, tVal){
+  return(tVal*sqrt(n1+n2)/sqrt(n1*n2))
+}
+
+pval4 <- function(n1,n2, tVal) {
+  return(pval(tval = tVal,
+              df = n1 + n2 -2))
+}
+
+hedgesGs4 <- function(n1, n2, cohensDs4) {
+  return(cohensDs4*(1-(3/(4*(n1+n2)-9))))
+}
+
+clEffectSize4 <- function(cohensDs4) {
+  return(clEffectSize(cohensDs4/sqrt(2)))
+}
+
+
+T_test_Yes_No_No_Yes_compute <- function(data1,data2) {
+  if (!is.null(data1) && !is.null(data2)) {
+    tTest <- t.test(data1,data2)
+    #TODO czy tVal jest dobrze wyliczane
+    v_tval <- tTest$statistic
+    v_n1 <- length(data1)
+    v_n2 <- length(data2)
+    v_p <- pval4(n1 = v_n1,
+                 n2 = v_n2,
+                 tVal = v_tval)
+    
+    v_cohensDs4 <- cohensDs4(n1 = v_n1,
+                             n2 = v_n2,
+                             tVal = v_tval)
+    
+    v_df = df3(n1 = v_n1,
+               n2 = v_n2)
+    
+    v_hedgesGs4 = hedgesGs4(n1 = v_n1,
+                            n2 = v_n2,
+                            cohensDs4 = v_cohensDs4)
+    
+    v_cl = clEffectSize4(cohensDs4 = v_cohensDs4)
+    
+    datas <- data.frame(
+      c('n group 1','n group 2','p','df'),
+      c(v_n1,v_n2,v_p,v_df),
+      c('t-value','Cohens ds','Hedges gs','CL'),
+      c(v_tval,v_cohensDs4,v_hedgesGs4,v_cl)
+      )
+    
+  }
+  else{
+    datas <- data.frame()
+  }
+  colnames(datas)[1] <- "A"
+  colnames(datas)[2] <- "B"
+  colnames(datas)[3] <- "C"
+  colnames(datas)[4] <- "D"
+  return(datas)
+  
+}
