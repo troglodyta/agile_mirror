@@ -7,7 +7,7 @@ shinyUI(bootstrapPage(
   
   sidebarLayout(
     sidebarPanel(
-      navbarPage("App Title",
+      navbarPage("",
                  tabPanel("T-test"),
                  tabPanel("F-test")),
       radioButtons(
@@ -53,10 +53,11 @@ shinyUI(bootstrapPage(
                mainPanel(
                  h2(textOutput("text1")),
                  shinyalert("shinyalert1", FALSE,auto.close.after = 5),
-                 flowLayout(
+                
+                  div( style = "width: 2000px;",
                    div(
                      class = "well container-fluid",
-                     style = "overflow-y:scroll; min-height:300px; width: 260px",
+                     style = "overflow-y:scroll; min-height:300px;max-height:300px;width: 260px; display: inline-block;",
                      
                      div(style = "float : left; width: 100px; margin: 0; padding: 0",
                          hotable("inputData1")),
@@ -68,8 +69,10 @@ shinyUI(bootstrapPage(
                    
                    
                    div(class = "well container-fluid",
-                       style = "overflow-y:scroll; margin-left: 40px; min-height: 300px; width: 500px"
-                       ,hotable("hotable2"))
+                       style = "overflow-y:scroll; min-height: 300px; width: 500px;display: inline-block;"
+                       ,
+                       verbatimTextOutput("summary")
+                     )
                  )
                )),
       tabPanel(
