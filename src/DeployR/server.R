@@ -99,6 +99,7 @@ shinyServer(function(input, output, session) {
         output$text1 <- renderText({
           "Independent Samples"
         })
+        x <- T_test_Yes_No_Yes_compute(data1List,data2List)
       }
       else if (computeMode == "4") {
         output$text1 <- renderText({

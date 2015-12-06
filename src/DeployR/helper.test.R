@@ -175,9 +175,89 @@ test.clEffectSize2 <- function() {
               0.933192799)
 }
 
-test.t <- function() {
-  checkEquals(t(mDiff = 1,
+test.tval <- function() {
+  checkEquals(tval(mDiff = 1,
                 sDiff = 0.666666667,
                 n = 10),
               4.74341649)
+}
+
+# widok 3
+test.cimdiff3 <- function() {
+  checkEquals(cimdiff3(mean1 = 8.7,
+                       mean2 = 7.7,
+                       sd1 = 0.823272602,
+                       sd2 = 0.948683298,
+                       n1 = 10,
+                       n2 =10
+                         ),
+              0.165487484
+              )
+}
+
+test.lowHigh3 <- function() {
+  checkEquals(lowHigh3(mean1 = 8.7,
+                       mean2 = 7.7,
+                       sd1 = 0.823272602,
+                       sd2 = 0.948683298,
+                       n1 = 10,
+                       n2 =10
+              ),
+              1.834512516
+              )
+}
+
+test.tval3 <- function () {
+  checkEquals(tval3(mean1 = 8.7,
+                    mean2 = 7.7,
+                    sd1 = 0.823272602,
+                    sd2 = 0.948683298,
+                    n1 = 10,
+                    n2 =10
+              ),
+              2.517544075
+              )
+}
+
+test.df3 <- function() {
+  checkEquals(df3(10,10),18)
+}
+
+test.cohensDs3 <- function() {
+  checkEquals(cohensDs3(mean1 = 8.7,
+                        mean2 = 7.7,
+                        sd1 = 0.823272602,
+                        sd2 = 0.948683298,
+                        n1 = 10,
+                        n2 =10),
+              1.125879938
+              )
+}
+test.cohensD3 <- function() {
+  checkEquals(cohensD3(mean1 = 8.7,
+                       mean2 = 7.7,
+                       sd1 = 0.823272602,
+                       sd2 = 0.948683298,
+                       n1 = 10,
+                       n2 =10
+                      ),
+              1.186781658
+              )
+}
+test.hedgesGs3 <- function() {
+  checkEquals(hedgesGs3(cohensDz3 = 1.125879938,
+                        n1 = 10,
+                        n2 = 10
+                          ),
+              1.078307546
+              )
+}
+
+test.clEffectSize3 <- function() {
+  checkEquals(clEffectSize3(mean1 = 8.7,
+                            mean2 = 7.7,
+                            sd1 = 0.823272602,
+                            sd2 = 0.948683298),
+              0.787018081
+              )
 }
