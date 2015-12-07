@@ -16,9 +16,19 @@ shinyServer(function(input, output, session) {
   })
   
   # funkcja zwracajaca typ wyliczen
+  #getComputeMode <- function() {
+   # return(input$radioComputingMode)
+  #}
+  # funkcja zwracajaca typ wyliczen
   getComputeMode <- function() {
-    return(input$radioComputingMode)
-  }
+    
+    if(is.null(input$checkboxMode)){
+      return(1)
+    }
+    print(input$checkboxMode)
+    return(input$checkboxMode)
+    
+    }
   
   # renderowanie tabeli dla Data1
   output$inputData1 <- renderHotable({
@@ -99,14 +109,11 @@ shinyServer(function(input, output, session) {
         output$text1 <- renderText({
           "Independent Samples"
         })
-        x <- T_test_Yes_No_Yes_compute(data1List,data2List)
       }
       else if (computeMode == "4") {
         output$text1 <- renderText({
           "ds from t for independent samples "
         })
-        
-        x <- T_test_Yes_No_No_Yes_compute(data1List,data2List)
       }
       else if (computeMode == "5") {
         output$text1 <- renderText({
