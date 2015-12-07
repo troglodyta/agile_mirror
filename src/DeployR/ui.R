@@ -21,6 +21,19 @@ shinyUI(bootstrapPage(
           "F-Test-No_Yes_Yes_No" = "6"
         ),selected = "1",inline = FALSE
       ),
+      
+      
+      checkboxGroupInput("checkboxMode", label =h5("Typ"), 
+            choices = list(
+              "Is the comparison between correlated samples?" = "1",
+              "Do you have the M's, SD's, r, and N?" = "2",
+              "Do you have the n for each condition?" = "3",
+              "Are all factors manipulated? (dla ftest)" = "4",
+              "Do you have the ANOVA table? (ftest)" = "5"
+            ), selected = 1, inline = FALSE),
+      
+      
+      
       radioButtons(
         "radioInputData", label = h5("Load data:"),
         choices = list("In app" = "app",
